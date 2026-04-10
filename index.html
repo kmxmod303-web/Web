@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<title>SkyElite Flights | احجز رحلاتك بسهولة</title>
+<meta name="description" content="احجز رحلتك القادمة مع SkyElite - عروض حصرية على تذاكر الطيران">
+<meta name="theme-color" content="#0f172a">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a href="#main" class="skip-link">تخطي إلى المحتوى</a>
+
+<!-- ========== HEADER ========== -->
+<header id="header" role="banner">
+  <div class="header-inner container">
+    <a href="/" class="logo" aria-label="SkyElite - الرئيسية">
+      SkyElite <i class="fas fa-plane-departure"></i>
+    </a>
+
+    <nav class="desktop-nav" role="navigation" aria-label="القائمة الرئيسية">
+      <ul>
+        <li><a href="#" aria-current="page">الرئيسية</a></li>
+        <li><a href="#destinations">الوجهات</a></li>
+        <li><a href="#my-bookings">حجوزاتي</a></li>
+        <li><a href="#offers">العروض</a></li>
+      </ul>
+    </nav>
+
+    <button class="header-cta" aria-label="تسجيل الدخول">
+      <i class="fas fa-user" style="margin-left:6px"></i>
+      دخول
+    </button>
+
+    <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ========== MOBILE MENU ========== -->
+<div class="menu-overlay" id="menu-overlay"></div>
+<nav class="mobile-menu" id="mobile-menu" role="navigation" aria-label="قائمة الجوال">
+  <div class="mobile-menu-header">
+    <a href="/" class="logo">SkyElite ✈️</a>
+    <button class="close-menu" aria-label="إغلاق القائمة"><i class="fas fa-times"></i></button>
+  </div>
+  <ul class="mobile-nav">
+    <li><a href="#"><i class="fas fa-home"></i> الرئيسية</a></li>
+    <li><a href="#destinations"><i class="fas fa-map-marker-alt"></i> الوجهات</a></li>
+    <li><a href="#"><i class="fas fa-suitcase"></i> حجوزاتي</a></li>
+    <li><a href="#"><i class="fas fa-tags"></i> العروض</a></li>
+    <li><a href="#"><i class="fas fa-headset"></i> الدعم</a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <button class="search-btn" style="margin-top:0">
+      <i class="fas fa-user"></i> تسجيل الدخول
+    </button>
+  </div>
+</nav>
+
+<!-- ========== MAIN ========== -->
+<main id="main">
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1200&q=80" 
+           alt="سماء صافية مع طائرة" loading="eager">
+      <div class="hero-gradient" aria-hidden="true"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        عروض حصرية على الرحلات
+      </div>
+      <h1>احجز رحلتك<br>حول العالم ✈️</h1>
+      <p class="hero-subtitle">اكتشف أفضل أسعار الطيران مع خدمة فاخرة وحجز فوري</p>
+
+      <!-- BOOKING CARD -->
+      <div class="booking-card">
+        <div class="booking-header">
+          <i class="fas fa-search-location"></i>
+          <span>ابحث عن رحلتك</span>
+        </div>
+
+        <!-- Trip Type -->
+        <div class="trip-type-toggle" role="tablist">
+          <button class="trip-type-btn active" role="tab" aria-selected="true" data-type="round">ذهاب وعودة</button>
+          <button class="trip-type-btn" role="tab" aria-selected="false" data-type="one">ذهاب فقط</button>
+          <button class="trip-type-btn" role="tab" aria-selected="false" data-type="multi">وجهات متعددة</button>
+        </div>
+
+        <!-- Form -->
+        <form class="booking-form" id="booking-form" novalidate>
+          <div class="form-fields">
+            <!-- From -->
+            <div class="form-field" id="from-field">
+              <label for="from-input">من</label>
+              <input type="text" id="from-input" class="field-input" placeholder="مدينة المغادرة" 
+                     autocomplete="off" required aria-label="مدينة المغادرة">
+              <i class="fas fa-plane-departure field-icon" aria-hidden="true"></i>
+              <button type="button" class="field-clear" aria-label="مسح"><i class="fas fa-times"></i></button>
+              <div class="autocomplete-dropdown" id="from-dropdown" role="listbox"></div>
+            </div>
+
+            <!-- Swap -->
+            <div class="swap-container">
+              <button type="button" class="swap-btn" id="swap-btn" aria-label="تبديل المدن">
+                <i class="fas fa-exchange-alt"></i>
+              </button>
+            </div>
+
+            <!-- To -->
+            <div class="form-field" id="to-field">
+              <label for="to-input">إلى</label>
+              <input type="text" id="to-input" class="field-input" placeholder="مدينة الوصول" 
+                     autocomplete="off" required aria-label="مدينة الوصول">
+              <i class="fas fa-plane-arrival field-icon" aria-hidden="true"></i>
+              <button type="button" class="field-clear" aria-label="مسح"><i class="fas fa-times"></i></button>
+              <div class="autocomplete-dropdown" id="to-dropdown" role="listbox"></div>
+            </div>
+
+            <!-- Dates -->
+            <div class="date-row">
+              <div class="form-field">
+                <label for="depart-date">المغادرة</label>
+                <input type="date" id="depart-date" class="field-input date-input" required aria-label="تاريخ المغادرة">
+                <i class="fas fa-calendar field-icon" aria-hidden="true"></i>
+              </div>
+              <div class="form-field" id="return-field">
+                <label for="return-date">العودة</label>
+                <input type="date" id="return-date" class="field-input date-input" aria-label="تاريخ العودة">
+                <i class="fas fa-calendar-check field-icon" aria-hidden="true"></i>
+              </div>
+            </div>
+
+            <!-- Passengers -->
+            <div class="form-field">
+              <label>المسافرون</label>
+              <div class="passengers-field" id="passengers-toggle" tabindex="0" role="button" 
+                   aria-haspopup="true" aria-expanded="false" aria-label="اختيار عدد المسافرين">
+                <div class="passengers-info">
+                  <i class="fas fa-user-friends" aria-hidden="true"></i>
+                  <div>
+                    <div class="passengers-label" id="passengers-label">1 بالغ</div>
+                    <div class="passengers-count" id="passengers-count">اقتصادي</div>
+                  </div>
+                </div>
+                <i class="fas fa-chevron-down passengers-chevron" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="search-btn" id="search-btn">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span>بحث عن رحلات</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRIP RESULTS ========== -->
+  <section class="trip-results" id="trip-results" aria-label="نتائج البحث">
+    <div class="results-header">
+      <div>
+        <h2 class="results-title" id="results-title">الرحلات المتاحة</h2>
+        <span class="results-count" id="results-count"></span>
+      </div>
+      <button class="results-close" id="results-close" aria-label="إغلاق النتائج">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="filter-chips" role="tablist">
+      <button class="chip active" role="tab" aria-selected="true" data-filter="all">الكل</button>
+      <button class="chip" role="tab" aria-selected="false" data-filter="cheapest">الأرخص</button>
+      <button class="chip" role="tab" aria-selected="false" data-filter="fastest">الأسرع</button>
+      <button class="chip" role="tab" aria-selected="false" data-filter="direct">مباشرة فقط</button>
+      <button class="chip" role="tab" aria-selected="false" data-filter="morning">صباحاً</button>
+    </div>
+
+    <div class="loading-spinner" id="loading-spinner">
+      <div class="spinner"></div>
+      <span>جاري البحث عن أفضل الرحلات...</span>
+    </div>
+
+    <div id="results-list"></div>
+  </section>
+
+  <!-- ========== POPULAR DESTINATIONS ========== -->
+  <section class="popular-section" id="destinations">
+    <div class="section-header">
+      <h2>🔥 وجهات رائجة</h2>
+      <a href="#">عرض الكل ←</a>
+    </div>
+    <div class="dest-scroll" id="dest-scroll">
+      <!-- Filled by JS -->
+    </div>
+  </section>
+</main>
+
+<!-- ========== PASSENGER MODAL ========== -->
+<div class="passenger-modal" id="passenger-modal" role="dialog" aria-modal="true" aria-label="اختيار المسافرين">
+  <div class="passenger-sheet">
+    <div class="sheet-handle" aria-hidden="true"></div>
+    <h3 class="sheet-title">المسافرون والفئة</h3>
+    
+    <div class="passenger-type">
+      <div class="pass-type-info">
+        <h4>بالغين</h4>
+        <p>12 سنة فأكثر</p>
+      </div>
+      <div class="pass-counter">
+        <button type="button" class="pass-btn" id="adults-minus" aria-label="ناقص بالغ">−</button>
+        <span class="pass-count" id="adults-count">1</span>
+        <button type="button" class="pass-btn" id="adults-plus" aria-label="زائد بالغ">+</button>
+      </div>
+    </div>
+
+    <div class="passenger-type">
+      <div class="pass-type-info">
+        <h4>أطفال</h4>
+        <p>2 - 11 سنة</p>
+      </div>
+      <div class="pass-counter">
+        <button type="button" class="pass-btn" id="children-minus" aria-label="ناقص طفل">−</button>
+        <span class="pass-count" id="children-count">0</span>
+        <button type="button" class="pass-btn" id="children-plus" aria-label="زائد طفل">+</button>
+      </div>
+    </div>
+
+    <div class="passenger-type">
+      <div class="pass-type-info">
+        <h4>رضع</h4>
+        <p>أقل من سنتين</p>
+      </div>
+      <div class="pass-counter">
+        <button type="button" class="pass-btn" id="infants-minus" aria-label="ناقص رضيع">−</button>
+        <span class="pass-count" id="infants-count">0</span>
+        <button type="button" class="pass-btn" id="infants-plus" aria-label="زائد رضيع">+</button>
+      </div>
+    </div>
+
+    <div class="passenger-type">
+      <div class="pass-type-info">
+        <h4>درجة السفر</h4>
+        <p>اختر فئة المقعد</p>
+      </div>
+      <div class="pass-counter">
+        <select id="class-select" style="background:var(--bg-primary);border:1px solid rgba(255,255,255,0.15);color:white;padding:8px 12px;border-radius:8px;font-family:inherit;font-size:0.9rem;">
+          <option value="economy">اقتصادي</option>
+          <option value="premium">بريميوم</option>
+          <option value="business">رجال أعمال</option>
+          <option value="first">الدرجة الأولى</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="button" class="sheet-done-btn" id="passengers-done">تم</button>
+  </div>
+</div>
+
+<!-- ========== BOTTOM NAV ========== -->
+<nav class="bottom-nav" role="navigation" aria-label="القائمة السفلية">
+  <a href="#" class="bottom-nav-item active">
+    <i class="fas fa-home"></i>
+    <span>الرئيسية</span>
+  </a>
+  <a href="#destinations" class="bottom-nav-item">
+    <i class="fas fa-compass"></i>
+    <span>استكشف</span>
+  </a>
+  <a href="#" class="bottom-nav-item">
+    <i class="fas fa-suitcase-rolling"></i>
+    <span>حجوزاتي</span>
+  </a>
+  <a href="#" class="bottom-nav-item">
+    <i class="fas fa-tags"></i>
+    <span>العروض</span>
+  </a>
+  <a href="#" class="bottom-nav-item">
+    <i class="fas fa-user-circle"></i>
+    <span>حسابي</span>
+  </a>
+</nav>
+
+<!-- ========== TOAST ========== -->
+<div class="toast" id="toast" role="alert" aria-live="polite">
+  <i class="fas fa-check-circle" aria-hidden="true"></i>
+  <span id="toast-text"></span>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
